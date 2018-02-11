@@ -1,0 +1,28 @@
+<!-- Welcome Box -->
+<section id="home" class="pos-rel">
+  <%= render partial: 'home/guest/index_header_carousel' %>
+  <div class="welcome-box padding-30px">
+    <div class="container-fluid text-center width-95-pct">
+      <div class="welcome-box-outer-border bg-darkblue-1">
+        <div class="welcome-box-content">
+          <h1 class="ucase color-white">Donation Connector</h1>
+          <h3 class="color-white">Connecting communities with<br>their local charities.</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4 mb-1">
+                <%= link_to "Login",  new_user_session_path, class: "btn btn-primary btn-lg ucase margin-5px" %>
+              </div>
+              <div class="col-sm-4 mb-1">
+                <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success btn-lg ucase margin-5px" %>
+              </div>
+
+              <div class="col-sm-4 mb-1">
+                <%= link_to "Our Mission", "#", class: "btn btn-info btn-lg ucase margin-5px" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="content-wrapper bg-light min-height-100pct">
+    <div class="row">
+      <div class="col">
+        <div class="card mx-auto mt-5 light-hover-box">
+          <div class="card-header text-large alert-primary text-color-darker">Donation Requests</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Organization</th>
+                    <th>Contact Name</th>
+                    <th>Contact Email</th>
+                    <th>Contact Phone</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @donation_requests.each do |request| %>
+                    <tr>
+                      <td><%= request.description %></td>
+                      <td></td>
+                      <td><%= request.contact_name %></td>
+                      <td><%= request.contact_email %></td>
+                      <td><%= request.contact_phone || "-" %></td>
+                      <td><a href="#" class="btn btn-primary">Donate</a></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

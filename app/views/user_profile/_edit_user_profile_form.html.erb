@@ -1,0 +1,72 @@
+<div class="card mx-auto mt-3 light-hover-box">
+  <div class="card-header text-large alert-primary text-color-darker">Edit Profile</div>
+  <div class="card-body">
+    <%= form_for(@user_profile, html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <%= f.label :display_name %><br />
+          <%= f.text_field :display_name, autofocus: true, class: "form-control", placeholder: "This is the name others will see when they view your profile" %>
+        </div>
+
+        <% if @user.organization %>
+          <div class="form-group col-sm-6">
+            <%= f.label :contact_email %><br />
+            <%= f.email_field :contact_email, class: "form-control", placeholder: "The public-facing contact email for your organization" %>
+          </div>
+          <div class="form-group col-sm-6">
+            <%= f.label :contact_phone %><br />
+            <%= f.text_field :contact_phone, class: "form-control", placeholder: "The public-facing phone number for your organization" %>
+          </div>
+        <% end %>
+
+        <div class="form-group col-sm-12">
+          <%= f.label :address %><br />
+          <%= f.text_field :address, class: 'form-control', placeholder: "Used only to recommend charities in your area or to let contributors know where you are." %>
+        </div>
+
+        <div class="form-group col-sm-12">
+          <%= f.label :address2 %><br />
+          <%= f.text_field :address2, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :city %><br />
+          <%= f.text_field :city, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :state %><br />
+          <%= f.text_field :state, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :zip %><br />
+          <%= f.text_field :zip, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :phone %><br />
+          <%= f.text_field :phone, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :gender %><br />
+          <%= f.text_field :gender, class: 'form-control' %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :birthdate %><br />
+          <%= f.date_field :birthdate, class: 'form-control' %>
+        </div>
+        <div class="form-group col-sm-12">
+          <%= f.label :bio %><br />
+          <%= f.text_area :bio, rows: 5, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
+  </div>
+</div>

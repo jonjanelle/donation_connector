@@ -1,0 +1,43 @@
+/**********
+  Colors
+**********/
+$white: #fff;
+$black: #000;
+$lightgray1: #eee;
+$lightgray2: #ddd;
+$lightgray3: #ccc;
+$lightgray4: #bbb;
+$darkgray1: #999;
+$darkgray2: #777;
+$darkgray3: #555;
+$darkgray4: #333;
+$darkgray5: #222;
+$blue: #3949a0;
+$darkblue1: #14114c;
+
+.color-blue { color: $blue !important; }
+.color-black{ color: $black !important; }
+.color-white { color: $white !important; }
+.gray-light-1 { color: $lightgray1 !important; }
+.gray-light-2 { color: $lightgray2 !important; }
+.gray-light-3 { color: $lightgray3 !important; }
+.gray-light-4 { color: $lightgray4 !important; }
+.gray-dark-1 { color: $darkgray1 !important; }
+.gray-dark-2 { color: $darkgray2 !important; }
+.gray-dark-3 { color: $darkgray3 !important; }
+.gray-dark-4 { color: $darkgray4 !important; }
+.gray-dark-5 { color: $darkgray5 !important; }
+
+
+.text-color-white   { color: #FFFFFF !important; }
+.text-color-light   { color: #f2f2f2 !important; }
+.text-color-medium  { color: #999999 !important; }
+.text-color-dark    { color: #777777 !important; }
+.text-color-darker  { color: #555555 !important; }
+.text-color-darkest { color: #333333 !important; }
+.text-color-black   { color: #000000 !important; }
+.text-color-blue    { color: #3333aa !important; }
+.text-color-reqd    { color: #aa2222 !important; }
+
+.bg-darkblue-1 { background-color: $darkblue1 !important; }
+.bg-light   { background-color: $lightgray1 !important; }

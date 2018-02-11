@@ -1,0 +1,9 @@
+<tr id="item-row-{{id}}">
+  <td class="min-width-150"><%= select_tag "items[{{id}}][category]" , options_for_select(@item_categories),  class: 'form-control', required: true %></td>
+  <td class="min-width-150"><%= text_field_tag "items[{{id}}][name]", nil, id: "item-name-{{id}}",  class: 'form-control', required: true %></td>
+  <td><%= number_field_tag "items[{{id}}][quantity]" , nil, id: "item-qty-{{id}}", class: 'form-control', min: 0 %></td>
+  <td class="min-width-150"><%= text_field_tag "items[{{id}}][date]",nil,  id: "item-date-{{id}}", class: "form-control"  %></td>
+  <td><%= check_box_tag "items[{{id}}][urgent]", nil, false, id: "item_urgent_{{id}}", class: 'form_control checkbox-large' %></td>
+  <td class="min-width-150"><%= text_field_tag "items[{{id}}][notes]", nil, id: "item-notes-{{id}}", class: 'form-control' %></td>
+  <td><i class="fa fa-times text-color-reqd remove-item-button text-medium" id="remove-item-{{id}}" aria-hidden="true"></i></td>
+</tr>

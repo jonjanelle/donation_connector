@@ -1,0 +1,6 @@
+
+  <% if @user %>
+    <%= render partial: 'home/authenticated/account_dashboard' %>
+  <% else %>
+    <%= render partial: 'home/guest/marketing_home' %>
+  <% end %>

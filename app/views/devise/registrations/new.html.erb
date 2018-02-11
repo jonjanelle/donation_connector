@@ -1,0 +1,72 @@
+<div class="card card-login mx-auto mt-5 light-hover-box">
+  <div class="card-header text-large alert-success text-color-darker">Sign Up</div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em class="text-color-reqd">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+
+      <hr>
+      <div class="text-medium text-center">Is this account for a charitable organization?</div>
+      <div class="text-center">
+        <%= f.check_box :organization, class: "checkbox-large" %>
+        <%= f.label :organization, "Yes", class: "margin-top-0rem" %>
+      </div>
+
+      <hr>
+      <div class="form-group" id="organization_group">
+        <%= f.label :organization_name %><br />
+        <%= f.text_field :organization_name, class: 'form-control' %>
+      </div>
+        <br />
+
+      </div>
+      <div class="actions">
+        <%= f.submit "Create Account", class: 'btn btn-block btn-primary' %>
+      </div>
+    <% end %>
+    <div class="margin-top-1rem margin-bottom-1rem">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+  <script>
+    $(function(){
+      $("#organization_group").hide();
+      $("#user_organization").on("change", function(){
+        $("#organization_group").toggle("slow");
+        $("#user_organization_name").css("border", "1px solid red");
+        if ($("#user_organization_name").attr("required") == "true") {
+          $("#user_organization_name").attr("required", "false");
+        } else {
+          $("#user_organization_name").attr("required", "true");
+        }
+      });
+    });
+
+  </script>
+<% end %>

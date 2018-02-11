@@ -1,0 +1,90 @@
+
+<div class="container-fluid">
+  <div class="content-wrapper bg-light min-height-100pct">
+    <div class="card max-width-90pct mx-auto mt-5 light-hover-box">
+      <div class="card-header text-large alert-success text-color-darker">New Donation Request</div>
+      <div class="card-body">
+        <%= form_for(@donation_request) do |f| %>
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <%= f.label :description %><br />
+              <%= f.text_field :description, autofocus: true, class: 'form-control', required: true, placeholder: "This will be the heading of your request." %>
+            </div>
+            <div class="form-group col-sm-6">
+              <%= f.label :contact_first %><br />
+              <%= f.text_field :contact_first, value: @user.first_name, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group col-sm-6">
+              <%= f.label :contact_last %><br />
+              <%= f.text_field :contact_last, value: @user.last_name, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group col-sm-6">
+              <%= f.label :contact_email %>
+              <%= f.email_field :contact_email, value: @user_profile.contact_email, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group col-sm-6">
+              <%= f.label :contact_phone %>
+              <%= f.text_field :contact_phone, value: @user_profile.contact_phone, class: 'form-control' %>
+            </div>
+            <div class="form-group col">
+              <%= f.label :notes %>
+              <%= f.text_area :notes, class: 'form-control', placeholder: "Any notes or special instructions you'd like potential donors to see?" %>
+            </div>
+            <div class="form-group col-sm-12">
+              <div class="table-responsive">
+                <table class="table table-bordered text-center donation-request-table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Needed By</th>
+                      <th>Urgent?</th>
+                      <th>Notes</th>
+                      <th>Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody id="item-table-body"></tbody>
+                </table>
+
+              </div>
+              <div class="text-center"><button id="add-row-btn" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Add Another Item</button></div>
+            </div>
+            <div class="actions col-sm-12 mt-4 mb-4">
+              <%= f.submit "Create Donation Request", data: { disable_with: "Processing..." }, class: 'btn btn-block btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="item-template" type="text/x-handlebars-template">
+  <%= render partial: 'item_row' %>
+</script>
+<% content_for :javascript do %>
+  <script>
+    $(function(){
+      const itemTemplateScript = $("#item-template").html();
+      const itemTemplate = Handlebars.compile (itemTemplateScript);
+      let itemCount = 1;
+
+      $("#item-table-body").append(itemTemplate({id: itemCount}));
+      $("#remove-item-1").click(function() { $("#item-row-1").remove(); });
+      $("#item-date-1").datepicker();
+
+      $("#add-row-btn").on("click", function(evt) {
+        evt.preventDefault();
+        itemCount += 1;
+        $("#item-table-body").append(itemTemplate({id: itemCount}));
+        $(".remove-item-button").unbind("click");
+        $("#item-date-"+itemCount).datepicker();
+        $(".remove-item-button").click(function() {
+          var itemId = this.id.split("-").pop();
+          $("#item-row-"+itemId).remove();
+        });
+      });
+
+    });
+  </script>
+<% end %>

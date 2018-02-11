@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="content-wrapper bg-light min-height-100pct">
+    <% if @user.organization %>
+      <%= link_to new_donation_request_path, class: "btn btn-success mb-3 text-medium" do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> Request a Donation
+      <% end %>
+    <% else %>
+      <%= link_to donations_path, class: "btn btn-success mb-3 text-medium" do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> Make New Donation
+      <% end %>
+    <% end %>
+    <%= render partial: 'home/authenticated/dashboard_info_boxes' %>
+    <%= render partial: 'home/authenticated/user_profile_summary' %>
+    <% if @user.organization %>
+      <%= render partial: 'home/authenticated/scheduled_donations' %>
+      <%= render partial: 'home/authenticated/donation_request_history', locals: {donation_requests: @donation_requests, donations: @donations, items_received: @items_received} %>
+    <% else %>
+      <%= render partial: 'home/authenticated/organizations_followed' %>
+      <%= render partial: 'home/authenticated/donation_history' %>
+    <% end %>
+  </div>
+</div>

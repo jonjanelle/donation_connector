@@ -1,0 +1,66 @@
+<ul class="navbar-nav navbar-sidenav">
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+    <%= link_to root_path, class: "nav-link" do %>
+      <i class="fa fa-fw fa-dashboard"></i>
+      <span class="nav-link-text">Dashboard</span>
+    <% end %>
+  </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Organizations">
+    <a class="nav-link" href="#">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <span class="nav-link-text">Browse Organizations</span>
+    </a>
+  </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My Donations">
+    <% if current_user.organization %>
+      <%= link_to  new_donation_request_path, class: "nav-link" do %>
+        <i class="fa fa-gift" aria-hidden="true"></i>
+        <span class="nav-link-text">New Donation Request</span>
+      <% end %>
+    <% else %>
+      <a class="nav-link" href="#">
+        <i class="fa fa-gift" aria-hidden="true"></i>
+        <span class="nav-link-text">My Donations</span>
+      </a>
+    <% end %>
+  </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+    <a class="nav-link" href="#">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <span class="nav-link-text">Messages</span>
+    </a>
+  </li>
+
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Account Settings">
+    <%= link_to edit_user_registration_path, class: "nav-link" do %>
+      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+      <span class="nav-link-text">Account Settings</span>
+    <% end %>
+  </li>
+</ul>
+
+<ul class="navbar-nav sidenav-toggler" id="sidenavToggler">
+  <li class="nav-item">
+    <a class="nav-link text-center">
+      <i class="fa fa-fw fa-2x fa-angle-left"></i>
+    </a>
+  </li>
+</ul>
+
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item">
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+      <i class="fa fa-fw fa-sign-out"></i> Logout
+    <% end %>
+  </li>
+</ul>
+
+
+<% content_for :javascript do %>
+  <script>
+
+  </script>
+<% end %>

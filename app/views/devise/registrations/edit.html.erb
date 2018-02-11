@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="content-wrapper bg-light min-height-100pct">
+    <div class="row">
+      <div class="col-sm-12">
+        <%= render partial: 'user_profile/edit_user_profile_form', locals: { :'@user_profile' => resource.user_profile, :'@user' => resource  } %>
+      </div>
+      <div class="col-md-12">
+        <%= render partial: 'edit_user_form' %>
+      </div>
+    </div>
+  </div>
+</div>
